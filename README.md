@@ -1,6 +1,14 @@
 # mcp-semantic-scholar
 
+<!-- mcp-name: io.github.harshanchenna/mcp-semantic-scholar -->
+
 MCP server for the [Semantic Scholar](https://www.semanticscholar.org/) academic paper search API. Search 200M+ papers, trace citations and references, and look up author profiles — all from Claude or any MCP-compatible client.
+
+## Quick start
+
+```bash
+uvx --from harshanchenna-mcp-semantic-scholar semantic-scholar-mcp
+```
 
 ## Tools
 
@@ -38,7 +46,26 @@ cd mcp-semantic-scholar
 uv sync
 ```
 
-### Add to Claude Code
+### Add to Claude Code (published package)
+
+```bash
+claude mcp add semantic-scholar -- uvx --from harshanchenna-mcp-semantic-scholar semantic-scholar-mcp
+```
+
+### Add to Claude Desktop (published package)
+
+```json
+{
+  "mcpServers": {
+    "semantic-scholar": {
+      "command": "uvx",
+      "args": ["--from", "harshanchenna-mcp-semantic-scholar", "semantic-scholar-mcp"]
+    }
+  }
+}
+```
+
+### Add to Claude Code (from a local clone)
 
 After cloning, register the server with Claude Code. Replace `/path/to/mcp-semantic-scholar` with your actual clone path:
 
@@ -52,7 +79,7 @@ Or if you prefer the `--with-editable` form:
 claude mcp add semantic-scholar -- uv run --with-editable /path/to/mcp-semantic-scholar semantic-scholar-mcp
 ```
 
-### Add to Claude Desktop
+### Add to Claude Desktop (from a local clone)
 
 Add the following to your `claude_desktop_config.json`:
 

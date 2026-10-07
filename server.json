@@ -1,0 +1,35 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.harshanchenna/mcp-semantic-scholar",
+  "description": "MCP server for the Semantic Scholar academic paper search API: search papers, trace citations and references, and look up author profiles.",
+  "repository": {
+    "url": "https://github.com/harshanchenna/mcp-semantic-scholar.git",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "registryBaseUrl": "https://pypi.org",
+      "identifier": "harshanchenna-mcp-semantic-scholar",
+      "version": "0.1.0",
+      "runtimeHint": "uvx",
+      "runtimeArguments": [
+        { "type": "positional", "value": "--from", "valueHint": "from-flag" },
+        { "type": "positional", "value": "harshanchenna-mcp-semantic-scholar", "valueHint": "package" },
+        { "type": "positional", "value": "semantic-scholar-mcp", "valueHint": "entrypoint" }
+      ],
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "SEMANTIC_SCHOLAR_API_KEY",
+          "description": "Optional personal API key to raise Semantic Scholar rate limits",
+          "isRequired": false,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}

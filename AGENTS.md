@@ -22,14 +22,20 @@ basic use; a free personal key raises rate limits. Single-package Python project
 ## Build, test, lint
 
 ```bash
-uv sync                                              # install deps into .venv
+uv sync --extra dev                                  # install deps into .venv
 uv run python -c "import semantic_scholar_mcp.server"   # quick import/smoke check
 uv run semantic-scholar-mcp                          # run the server (stdio transport)
 ```
 
-There is no automated test suite or linter configured yet. Given `client.py` has retry/rate-limit
-logic that's easy to break silently, adding `pytest` coverage for it (as a `dev` optional-dependency
-group) is worth doing before it grows further.
+A `pytest` suite (`dev` optional-dependency group, run with `uv run --extra dev pytest -q`) covers
+the formatting helpers and tool registration; CI runs it on every push and PR. Extend it alongside
+any new tool or logic change.
+
+## Releasing
+
+Bump the version in `pyproject.toml` and `server.json` together, then push a `v<version>` tag.
+`release.yml` checks the three agree, runs the tests, publishes to PyPI via Trusted Publishing, and
+then publishes `server.json` to the MCP registry. No tokens are stored in the repo.
 
 ## Standards this repo owns
 
